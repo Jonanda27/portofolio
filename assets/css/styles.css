@@ -802,10 +802,9 @@ section {
     transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Projects Section */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3rem;
 }
 
@@ -1199,14 +1198,17 @@ section {
         justify-content: center;
     }
     
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
     
-    .about-image-wrapper {
-        max-width: 400px;
-        margin: 0 auto;
+    .bento-main {
+        grid-column: span 2;
+    }
+    
+    .bento-highlights {
+        grid-column: span 2;
+        grid-template-columns: repeat(2, 1fr);
     }
     
     .skills-grid {
@@ -1228,17 +1230,67 @@ section {
         font-size: 2rem;
     }
     
-    .hero-stats {
+    .hero-stats-dock {
         flex-direction: column;
         gap: 1.5rem;
+        padding: 1.5rem 2rem;
+        border-radius: 30px;
     }
     
     .stat {
         text-align: center;
     }
     
+    .stat-divider {
+        width: 100%;
+        height: 1px;
+    }
+    
+    .skills-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 2rem;
+        margin: 0 -5%;
+        padding-left: 5%;
+        padding-right: 5%;
+        gap: 1.5rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    
+    .skills-grid::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .skill-category {
+        min-width: 85vw;
+        scroll-snap-align: center;
+        flex-shrink: 0;
+    }
+    
+    /* Project Cards Mobile Optimation */
     .projects-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .project-image {
+        height: 180px; /* Lebar gambar disesuaikan agar tidak terlalu memakan tempat di layar hp */
+    }
+    
+    .project-info {
+        padding: 1.25rem;
+    }
+    
+    .project-info h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .project-info p {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
     }
     
     .form-row {
@@ -1250,8 +1302,55 @@ section {
         gap: 1.5rem;
     }
     
-    .about-highlights {
-        grid-template-columns: 1fr;
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .bento-main {
+        grid-column: span 2;
+    }
+    
+    .bento-photo {
+        grid-column: span 1;
+        min-height: 200px;
+    }
+    
+    .bento-stat {
+        grid-column: span 1;
+    }
+    
+    .bento-highlights {
+        grid-column: span 2;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .bento-h-item {
+        padding: 1rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 1rem;
+    }
+    
+    .hero-buttons .btn {
+        flex: 1 1 100%;
+        width: auto;
+        justify-content: center;
+    }
+    
+    @media (min-width: 400px) {
+        .hero-buttons .btn {
+            flex: 1;
+        }
     }
 }
 
