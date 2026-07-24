@@ -417,7 +417,7 @@ function initForms() {
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             
-            submitBtn.innerHTML = '<span>Pesan Terkirim!</span>';
+            submitBtn.innerHTML = `<span data-i18n="form_success">${translations['form_success'][currentLang]}</span>`;
             submitBtn.style.background = 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)';
             
             // Reset form
@@ -467,8 +467,16 @@ function initProjects() {
             }
         });
         
-        loadMoreBtn.querySelector('span').innerText = isExpanded ? 'Tampilkan Lebih Sedikit' : 'Lihat Selengkapnya';
+        loadMoreBtn.querySelector('span').setAttribute('data-i18n', isExpanded ? 'btn_load_less' : 'btn_load_more');
+        loadMoreBtn.querySelector('span').innerText = translations[isExpanded ? 'btn_load_less' : 'btn_load_more'][currentLang];
     });
+    
+    // Make update function global for i18n script
+    window.updateLoadMoreButtonText = function() {
+        const key = isExpanded ? 'btn_load_less' : 'btn_load_more';
+        loadMoreBtn.querySelector('span').setAttribute('data-i18n', key);
+        loadMoreBtn.querySelector('span').innerText = translations[key][currentLang];
+    };
 }
 
 // ==========================================
